@@ -1,0 +1,44 @@
+class MinStack {
+private:
+    stack<int> _st;
+    stack<int> _minSt; 
+public:
+    /** initialize your data structure here. */
+    //构造
+    MinStack() {}
+    //插入
+    void push(int val) 
+    {
+        _st.push(val);
+        if(_minSt.empty() || _minSt.top()>=val)
+        {
+            _minSt.push(val);
+        }
+    }
+    //删除栈顶
+    void pop() 
+    {
+        if(_st.top()==_minSt.top())
+            _minSt.pop();
+        _st.pop();
+    }
+    //返回栈顶
+    int top() 
+    {
+        return _st.top();
+    }
+    //获取最小值
+    int getMin() 
+    {
+        return _minSt.top();
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(val);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
