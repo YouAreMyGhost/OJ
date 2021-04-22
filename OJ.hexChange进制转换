@@ -1,0 +1,22 @@
+
+
+//解法：仿照短除法
+    string solve(int num, int N) {
+        if (num == 0) return "0";
+        int sign = 1;
+        if (num < 0) {
+            sign = -1;
+            num = - num;
+        }
+        string code = "0123456789ABCDEF";
+        vector<char> ans;
+        while (num != 0) {
+            ans.push_back(code[num % N]);
+            num = num / N;
+        }
+        if (sign == -1) ans.push_back('-');
+        reverse(ans.begin(), ans.end());
+        string s(ans.begin(), ans.end());
+        //s.insert(s.begin(), ans.begin(), ans.end());
+        return s;
+    }
