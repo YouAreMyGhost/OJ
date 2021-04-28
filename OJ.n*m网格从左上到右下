@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int Solution(int m,int n)
+{
+    if(m==1 || n==1)
+        return 1;
+    return Solution(m-1,n)+Solution(m,n-1);
+}
+
+
+int main()
+{
+    int m,n;
+    cin>>m>>n;
+    int res;
+    if(m<=0 || n<=0)
+        cout<<0<<endl;
+    else{
+        res=Solution(m,n);
+        cout<<res<<endl;
+    }
+    return 0;
+}
