@@ -1,0 +1,34 @@
+typedef struct ListNode ListNode;
+class Partition {
+public:
+    ListNode* partition(ListNode* pHead, int x)
+    {
+        ListNode*smallHead,*smallTail,*bigHead,*bigTail;
+        smallHead=smallTail=(ListNode*)malloc(sizeof(ListNode));
+        bigHead=bigTail=(ListNode*)malloc(sizeof(ListNode));
+        smallHead->next=bigHead->next=NULL;
+         
+        ListNode*cur=pHead;
+        while(cur)
+        {
+            if(cur->val<x)
+            {
+                smallTail->next=cur;
+                smallTail=smallTail->next;
+            }
+            else
+            {
+                bigTail->next=cur;
+                bigTail=bigTail->next;
+            }
+            cur=cur->next;
+        }
+        smallTail->next=bigHead->next;
+        bigTail->next=NULL;
+         
+        ListNode*list=smallHead->next;
+        free(smallHead);
+        free(bigHead);
+        return list;
+    }
+};
