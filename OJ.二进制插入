@@ -1,0 +1,9 @@
+//有两个32位整数n和m，将m的二进制数位插入到n的二进制数位第j到i位，其中二进制的位数从低位到高位且以0开始
+//保证n的第j位到第i位均为0，且m的二进制位数小于等于i-j+1
+class BinInsert {
+public:
+	int binInsert(int n, int m, int j, int i) {
+		m = m << j;
+		return n | m;
+	}
+};
