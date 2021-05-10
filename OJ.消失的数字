@@ -1,0 +1,15 @@
+class Solution 
+{
+public:
+    int missingNumber(vector<int>& nums) 
+    {
+        int n=nums.size();
+        int num=(n*(n+1))/2;
+        int count=0;
+        for(auto e:nums)
+        {
+            count+=e;
+        }
+        return num-count;
+    }
+};
