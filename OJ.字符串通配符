@@ -1,0 +1,45 @@
+int main()
+{
+	string regex;
+	string str;
+	while (cin >> regex >> str)
+	{
+
+		int j = 0;
+		int i = 0;
+		bool flag = false;
+		while (str[i] != '\0' || regex[j] != '\0')
+		{
+			if (regex[j] == '*')
+			{
+				j++;
+				flag = true;
+			}
+			else if (str[i] == regex[j] || regex[j] == '?')
+			{
+				i++;
+				j++;
+			}
+			else if (flag == true)
+			{
+				while (str[i] != regex[j])
+				{
+					i++;
+				}
+				flag = false;
+			}
+			else
+			{
+				cout << "false" << endl;
+				break;
+			}
+		}
+		if (str[i] == '\0' && str[j] == '\0')
+		{
+			cout << "true" << endl;
+		}
+
+	}
+	return 0;
+
+}
