@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> ans;
+    int pos = 0;
+    vector<int> printNumbers(int n)
+    {
+        string s = "0123456789";
+        string str = "";
+        dfs(s, str, n);
+        return ans;
+    }
+    void dfs(string &s, string &str, int k)
+    {
+        if(str.length()==k)
+        {
+            if(pos==0)
+            {
+                //前导零的去除
+                pos=1;
+                return;
+            } 
+            ans.push_back(stoi(str));
+            return;
+        }
+        for(int i=0; i<s.length();++i)
+        {
+            str+=s[i];
+            dfs(s, str, k);
+            str.pop_back();
+        }
+    }
+};
