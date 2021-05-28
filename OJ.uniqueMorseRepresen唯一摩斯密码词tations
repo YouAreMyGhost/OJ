@@ -1,0 +1,19 @@
+class Solution {
+public:
+    const vector<string> s={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+    int uniqueMorseRepresentations(vector<string>& words) 
+    {
+        set<string> morse;
+        //vector<vector<string>> v;
+        for(auto word:words)
+        {
+            string buffer;
+            for(auto a:word)
+            {
+                buffer+=s[a-'a'];
+            }
+            morse.insert(buffer);
+        }
+        return morse.size();
+    }
+};
