@@ -1,0 +1,24 @@
+
+给你一个回文字符串 palindrome ，请你将其中 一个 字符用任意小写英文字母替换，使得结果字符串的字典序最小，且 不是 回文串。
+
+请你返回结果字符串。如果无法做到，则返回一个空串。
+class Solution {
+public:
+    string breakPalindrome(string pal) 
+        if(pal.size()<=1)
+        {
+            return "";
+        }
+       
+        for(int i=0;i<pal.size()/2;i++)
+        {
+            if(pal[i]!='a')
+            {
+                pal[i]='a';
+                return pal;
+            }
+        }
+        pal.back()='b';
+        return pal;
+    }
+};
