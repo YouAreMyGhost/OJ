@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        TreeNode* cur =root;
+        int level =1;
+        int h = getDepth(root);
+        int numbers=0;
+        while(cur){
+            TreeNode* temp = cur->right;
+            if(level+getDepth(temp)==h &&temp){
+                cur =cur->right;
+                numbers +=pow(2,h-level-1);
+                level +=1;
+            }else{
+                cur =cur->left;
+                level+=1;
+            }
+        }
+        return numbers+pow(2,h-1);
+    }
+
+    int getDepth(TreeNode* root){
+        int depth =0;
+        while(root){
+            root=root->left;
+            depth++;
+        }
+        return depth;
+    }
+};
