@@ -1,0 +1,31 @@
+从扑克牌中随机抽5张牌，判断是不是一个顺子
+class Solution {
+public:
+    bool isStraight(vector<int>& nums) 
+    {
+        vector<bool>puke(14,true);
+        int L=INT_MAX;int R=INT_MIN;
+        for(auto e:nums)
+        {
+            if(e==0)
+            {
+                continue;
+            }
+
+            if(puke[e]==false)
+            {
+                return false;
+            }
+
+            puke[e]=false;
+
+            L=min(L,e);
+            R=max(R,e);
+        }
+        if(R-L>4)
+        {
+            return false;
+        }
+        return true;
+    }
+};
