@@ -1,0 +1,13 @@
+class Solution {
+public:
+    static bool sqrtSort(const vector<int>& u, const vector<int>& v)
+    {
+        return u[0]*u[0]+u[1]*u[1]<v[0]*v[0]+v[1]*v[1];
+    }
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) 
+    {
+        sort(points.begin(),points.end(),sqrtSort);
+        vector<vector<int>>v={points.begin(),points.begin()+K};
+        return v;
+    }
+};
