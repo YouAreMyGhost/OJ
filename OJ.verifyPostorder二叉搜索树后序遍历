@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool _verifyPostorder(vector<int>& post,int start,int end)
+    {
+        if(start>=end) return true;
+
+        int root=post[end];
+        int key=start;
+        while(post[key]<root && key<end)
+        {
+            key++;
+        }
+        //key+=1;
+        for(int i=key;i<end;i++)
+        {
+            if(post[i]<root) return false;
+        }
+
+        return _verifyPostorder(post,start,key-1)&&_verifyPostorder(post,key,end-1);
+    }
+
+    bool verifyPostorder(vector<int>& post) 
+    {
+        if(post.size()==1)
+        {
+            return true;
+        }
+        return _verifyPostorder(post,0,post.size()-1);
+    }
+};
