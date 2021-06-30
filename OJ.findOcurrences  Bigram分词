@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> findOcurrences(string text, string first, string second) 
+    {
+        vector<string>vStr;
+        vector<string>vRes;
+        string tmp;
+        for(int i=0;i<text.size();i++)
+        {
+            if(text[i]==' ')
+            {
+                vStr.push_back(tmp);
+                tmp="";
+                
+            }
+            else
+            {
+                tmp+=text[i];
+            }
+        }
+        vStr.push_back(tmp);
+        for(int i=0;i<vStr.size()-2;i++)
+        {
+            if(vStr[i]==first&&vStr[i+1]==second) 
+                vRes.push_back(vStr[i+2]);
+        }
+
+        return vRes;
+    }
+};
